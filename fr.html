@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olga Mavridou — Conceptrice Pédagogique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEAD9;
+    --paper-2:#E7E0CB;
+    --card:#FBF9F1;
+    --ink:#2B2A28;
+    --ink-soft:#5B564C;
+    --rule:#C9C0A6;
+    --red:#B3432B;
+    --teal:#2F6F6E;
+    --ochre:#C08A2E;
+    --dusty:#5B6B8C;
+    --sage:#6E8F5E;
+    --max-w:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(var(--paper) 0px, var(--paper) 34px, var(--rule) 35px);
+    background-color:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  a{color:var(--red); text-decoration:none;}
+  ::selection{ background:#E6C9A8; }
+  :focus-visible{ outline:3px solid var(--teal); outline-offset:3px; }
+
+  .wrap{ max-width:var(--max-w); margin:0 auto; padding:0 28px; }
+
+  /* ============ STICKY NAV ============ */
+  nav.topnav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(239,234,217,.92);
+    backdrop-filter:blur(4px);
+    border-bottom:1.5px dashed var(--rule);
+  }
+  nav.topnav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 28px;
+    flex-wrap:wrap; gap:8px;
+  }
+  .nav-links{ display:flex; flex-wrap:wrap; gap:2px; }
+  .nav-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    padding:6px 10px;
+    border-radius:3px;
+  }
+  .nav-links a:hover{ color:var(--red); background:var(--paper-2); }
+  .lang-switch{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    display:flex; border:1.5px solid var(--ink); flex:none;
+  }
+  .lang-switch a{ padding:5px 11px; color:var(--ink); }
+  .lang-switch a.active{ background:var(--ink); color:var(--paper); }
+  .lang-switch a:not(.active):hover{ background:var(--paper-2); }
+
+  /* ============ HERO ============ */
+  header.hero{ padding:64px 0 50px; }
+  .eyebrow-register{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft); margin:0 0 18px;
+  }
+  h1.name{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(42px, 8vw, 74px); line-height:0.98; margin:0 0 6px; color:var(--ink);
+  }
+  .role-line{
+    font-family:'IBM Plex Mono', monospace; font-size:15px; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--teal); font-weight:600; margin:0 0 26px;
+  }
+  .tagline{ font-size:18px; max-width:56ch; color:var(--ink-soft); margin:0 0 34px; }
+
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:13.5px; font-weight:600;
+    letter-spacing:.03em; text-transform:uppercase;
+    background:var(--red); color:#fff !important;
+    padding:13px 24px; border:none; box-shadow:3px 4px 0 rgba(43,42,40,.18);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-primary:hover{ transform:translate(-1px,-1px); box-shadow:4px 5px 0 rgba(43,42,40,.22); }
+  .btn-primary svg{ width:14px; height:14px; }
+
+  /* ============ SECTION HEADERS ============ */
+  .section{ padding:54px 0; scroll-margin-top:60px; }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:8px; }
+  .section-num{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--red);
+    border:1.5px solid var(--red); border-radius:50%;
+    width:26px; height:26px; display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  h2.section-title{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(26px,4vw,34px); margin:0; }
+  .section-sub{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft); margin:0 0 30px 40px; }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ============ ABOUT ============ */
+  .about-block{ margin-bottom:22px; max-width:64ch; }
+  .about-block .label{
+    display:block; font-family:'IBM Plex Mono', monospace; font-size:11px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--teal); margin-bottom:6px;
+  }
+  .about-block p{ margin:0; font-size:17px; color:var(--ink); }
+
+  /* ============ CASE STUDIES ============ */
+  .case{
+    background:var(--card); border:1.5px solid var(--rule);
+    box-shadow:5px 6px 0 rgba(43,42,40,.06); padding:34px 32px 30px; margin-bottom:40px; position:relative;
+  }
+  .case::before{ content:""; position:absolute; left:0; top:22px; bottom:22px; width:3px; background:var(--case-accent, var(--teal)); }
+  .case-top{ display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:6px; }
+  .case-title{ font-family:'Fraunces', serif; font-weight:600; font-size:26px; margin:0; }
+  .case-org{ color:var(--case-accent, var(--teal)); }
+  .cefr-tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:.04em;
+    color:#fff; background:var(--case-accent, var(--teal)); padding:4px 10px; border-radius:2px; white-space:nowrap;
+  }
+  .case-meta{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft); margin:0 0 22px; }
+  .case-grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px 34px; }
+  @media (max-width:640px){ .case-grid{ grid-template-columns:1fr; } }
+  .case-field h4{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--red); margin:0 0 8px; display:flex; align-items:center; gap:6px;
+  }
+  .check{ display:inline-block; width:14px; height:14px; }
+  .check path{
+    fill:none; stroke:var(--red); stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:20; stroke-dashoffset:20; transition:stroke-dashoffset .5s ease .15s;
+  }
+  .in .check path{ stroke-dashoffset:0; }
+  .case-field p, .case-field li{ margin:0 0 6px; font-size:14.5px; color:var(--ink); }
+  .case-field ul{ margin:0; padding-left:18px; }
+  .case-field li{ margin-bottom:5px; }
+  .tools-line{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink-soft); }
+  .shot-gallery{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:14px; margin-top:16px; }
+  .shot-gallery img, .proj-shot{
+    width:100%; display:block; border:1.5px solid var(--rule);
+    box-shadow:3px 4px 0 rgba(43,42,40,.08); border-radius:2px;
+  }
+  .shot-caption{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); margin:6px 0 0; text-align:center; }
+  .case-note{ margin-top:20px; padding-top:14px; border-top:1px dashed var(--rule); font-size:12.5px; font-style:italic; color:var(--ink-soft); }
+  .case-reflection{ margin-top:18px; padding:12px 16px; background:rgba(179,67,43,.06); border-left:2.5px dashed var(--red); }
+  .case-reflection .label{
+    font-family:'Caveat', cursive; font-size:20px; font-weight:700; color:var(--red);
+    display:block; transform:rotate(-1deg); margin-bottom:2px;
+  }
+  .case-reflection p{ margin:0; font-size:14px; color:var(--ink); font-family:'IBM Plex Sans', sans-serif; }
+
+  /* ============ ACADEMIC/PERSONAL PROJECT CARDS ============ */
+  .proj-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:22px; }
+  .proj-card{
+    background:var(--card); border:1.5px solid var(--rule); padding:24px 22px;
+    box-shadow:4px 5px 0 rgba(43,42,40,.06);
+  }
+  .type-tag{
+    display:inline-block; font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:.06em; text-transform:uppercase; color:#fff;
+    padding:3px 9px; border-radius:2px; margin-bottom:12px;
+  }
+  .type-academic{ background:var(--ochre); }
+  .type-personal{ background:var(--sage); }
+  .type-masters{ background:var(--dusty); }
+  .proj-card h4{ font-family:'Fraunces', serif; font-weight:600; font-size:19px; margin:0 0 12px; }
+  .proj-field{ margin-bottom:11px; }
+  .proj-field .k{
+    display:block; font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:.08em; text-transform:uppercase; color:var(--teal); margin-bottom:3px;
+  }
+  .proj-field p{ margin:0; font-size:13.8px; color:var(--ink); }
+  .proj-field .tools-inline{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--ink-soft); }
+
+  /* ============ PHILOSOPHY ============ */
+  .phil-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:22px; }
+  .phil-card{ padding:6px 0; }
+  .phil-icon{ width:34px; height:34px; margin-bottom:14px; }
+  .phil-icon svg{ width:100%; height:100%; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .phil-card h4{ font-family:'Fraunces', serif; font-weight:600; font-size:18px; margin:0 0 8px; }
+  .phil-card p{ margin:0; font-size:14px; color:var(--ink-soft); }
+
+  /* ============ SKILLS / TOOLBOX ============ */
+  .toolbox{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:26px 30px; }
+  .tool-group h4{
+    display:flex; align-items:center; gap:9px;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--teal); margin:0 0 10px; border-bottom:1.5px dashed var(--rule); padding-bottom:8px;
+  }
+  .tool-icon{ width:18px; height:18px; flex:none; }
+  .tool-icon svg{ width:100%; height:100%; fill:none; stroke:var(--teal); stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .pill-row{ display:flex; flex-wrap:wrap; gap:7px; }
+  .pill{ font-family:'IBM Plex Mono', monospace; font-size:12px; background:var(--paper-2); border:1px solid var(--rule); padding:4px 10px; border-radius:20px; color:var(--ink); }
+
+  /* ============ EDUCATION / CERTS ============ */
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  @media (max-width:700px){ .two-col{ grid-template-columns:1fr; } }
+  .edu-item{ margin-bottom:16px; }
+  .edu-item h4{ margin:0 0 4px; font-family:'Fraunces',serif; font-weight:600; font-size:17px; }
+  .edu-item p{ margin:0; font-size:13.5px; color:var(--ink-soft); font-family:'IBM Plex Mono', monospace; }
+  .cert-list{ list-style:none; margin:0; padding:0; }
+  .cert-list li{ padding:9px 0; border-bottom:1px dashed var(--rule); font-size:14px; }
+  .cert-list li:last-child{ border-bottom:none; }
+
+  /* ============ CONTACT / FOOTER ============ */
+  .contact-card{
+    background:var(--card); border:1.5px solid var(--rule);
+    box-shadow:5px 6px 0 rgba(43,42,40,.06); padding:38px 34px; text-align:center;
+  }
+  .contact-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px 26px; font-family:'IBM Plex Mono', monospace; font-size:14px; margin:18px 0 20px; }
+  .contact-links a{ color:var(--ink); font-weight:600; }
+  .contact-links a:hover{ color:var(--red); }
+  .lang-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:6px; }
+  .lang-chip{ font-family:'IBM Plex Mono', monospace; font-size:12px; background:var(--paper-2); border:1px solid var(--rule); padding:4px 11px; }
+
+  footer{ padding:50px 0 70px; text-align:center; }
+  .signoff{ font-family:'Caveat', cursive; font-size:34px; color:var(--red); transform:rotate(-2deg); margin:0 0 6px; display:inline-block; }
+  footer p{ color:var(--ink-soft); font-size:13px; margin:4px 0; }
+
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="nav-links">
+      <a href="#featured-projects">Projets</a>
+      <a href="#academic-projects">Académiques</a>
+      <a href="#about">À propos</a>
+      <a href="#philosophy">Démarche</a>
+      <a href="#skills">Compétences</a>
+      <a href="#education">Formation</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="lang-switch"><a href="index.html">EN</a><a href="fr.html" class="active">FR</a></div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow-register">Portfolio · Ingénierie Pédagogique</p>
+    <h1 class="name">Olga Mavridou</h1>
+    <p class="role-line">Conceptrice Pédagogique</p>
+    <p class="tagline">Des expériences d'apprentissage conçues à travers les langues et les cultures.</p>
+    <a href="#featured-projects" class="btn-primary">Voir mes projets <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </header>
+
+  <!-- ============ FEATURED PROFESSIONAL PROJECTS ============ -->
+  <section class="section" id="featured-projects">
+    <div class="section-head"><span class="section-num">01</span><h2 class="section-title">Projets Professionnels</h2></div>
+    <p class="section-sub">clients réels, cours réels</p>
+
+    <!-- CASE 1 -->
+    <article class="case reveal" style="--case-accent:var(--red)">
+      <div class="case-top">
+        <h3 class="case-title">Lingo Powers <span class="case-org">— Série de vidéos microlearning</span></h3>
+        <span class="cefr-tag">CECRL A1–B1</span>
+      </div>
+      <p class="case-meta">Conceptrice pédagogique / Créatrice de contenu · 06/2025 – 09/2025</p>
+
+      <div class="case-grid">
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Contexte</h4>
+          <p>Un centre de cours particuliers en ligne (langues étrangères) a commandé une série de vidéos de microlearning en français pour des apprenants adultes débutants. J'ai travaillé au sein d'une petite équipe — une collègue formatrice sur le contenu et le programme, une responsable pédagogique sur la relecture visuelle et créative, et les propriétaires du centre pour la validation finale.</p>
+        </div>
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Défi</h4>
+          <p>Transformer un programme convenu en 18 leçons vidéo individuellement scénarisées et structurées — chacune avec des objectifs clairs, un support bilingue et un cahier d'exercices imprimable — dans un calendrier de production serré.</p>
+        </div>
+        <div class="case-field" style="grid-column:1 / -1;">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Démarche de conception</h4>
+          <ul>
+            <li>Co-sélection du manuel et répartition des unités avec une collègue formatrice, puis définition des objectifs pédagogiques et d'un but communicatif clair pour chaque vidéo</li>
+            <li>Rédaction des scripts pédagogiques et des séquences de diapositives — accueil, aperçu de l'objectif, explication guidée, pratique — pour chaque module</li>
+            <li>Production de la narration bilingue (grec/français) et enregistrement des deux versions linguistiques moi-même</li>
+            <li>Création des exercices intégrés à la vidéo et d'un cahier d'exercices imprimable de six pages par unité, en utilisant des outils assistés par l'IA pour la génération de texte et d'exercices, dans le respect des gabarits existants de la responsable pédagogique</li>
+            <li>Soumission de chaque vidéo pour relecture créative, intégration des retours, puis envoi aux propriétaires du centre pour validation finale avant de passer au module suivant</li>
+            <li>En cours de projet, adaptation des 18 vidéos en une seconde version sans la marque du client, à la demande des propriétaires, afin que le matériel puisse être revendu séparément à l'avenir</li>
+          </ul>
+        </div>
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Solution</h4>
+          <p>18 modules vidéo de microlearning (avec une version avec et sans marque pour chacun) ainsi que 18 cahiers d'exercices imprimables de six pages, couvrant le vocabulaire et la grammaire du français débutant.</p>
+        </div>
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Résultat</h4>
+          <p>Une bibliothèque de cours complète et validée, livrée dans les délais malgré un changement de périmètre en cours de projet — mon premier projet collaboratif et rémunéré en ingénierie pédagogique, et dont je suis sincèrement fière.</p>
+        </div>
+      </div>
+
+      <p class="tools-line">Outils — Canva · InVideo AI · ChatGPT · Claude</p>
+      <p class="case-note">En raison d'accords de confidentialité, une sélection de captures d'écran et un court extrait vidéo sont disponibles sur demande.</p>
+      <div class="case-field" style="margin-top:18px;">
+        <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Contraintes du projet</h4>
+        <p>Ce projet a été développé dans le cadre d'un dispositif pédagogique déjà établi. Les gabarits visuels, la charte graphique et les standards de production — y compris le format du cahier d'exercices — étaient prédéfinis par la responsable pédagogique. Mon rôle s'est concentré sur l'ingénierie pédagogique, la rédaction de scripts, la narration et le développement de contenu au sein de ce système existant.</p>
+      </div>
+    </article>
+
+    <!-- CASE 2 -->
+    <article class="case reveal" style="--case-accent:var(--teal)">
+      <div class="case-top">
+        <h3 class="case-title">i-Εκπαίδευση <span class="case-org">/ QLearn — Écosystème d'apprentissage du français</span></h3>
+        <span class="cefr-tag">CECRL A1–B2</span>
+      </div>
+      <p class="case-meta">Conceptrice pédagogique / Formatrice · 06/2022 – Présent</p>
+
+      <div class="case-grid">
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Contexte</h4>
+          <p>Une collaboration continue avec un centre de cours particuliers — qui propose également du soutien scolaire, des langues étrangères, des certifications informatiques et des programmes en partenariat avec des universités — sur trois de ses plateformes au fil du temps : cours en ligne en direct (4Schools), une bibliothèque de cours autoportants (i-Εκπαίδευση, sous Moodle), et — depuis 2025 — une place de marché de cours commerciale (QLearn). Mon travail s'est concentré spécifiquement sur ses cours de français.</p>
+        </div>
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Défi</h4>
+          <p>Construire un ensemble cohérent et réutilisable de supports d'apprentissage du français pouvant servir l'enseignement en direct, l'étude autoportante et — à terme — un cours public payant, sans dupliquer le travail à chaque fois.</p>
+        </div>
+        <div class="case-field" style="grid-column:1 / -1;">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Démarche de conception</h4>
+          <ul>
+            <li>Sélection du manuel <em>Vite et Bien</em> et création de fiches originales de grammaire et de vocabulaire pour chaque chapitre</li>
+            <li>Animation de cours en ligne en direct via 4Schools, en sélectionnant des exercices en ligne existants à utiliser en classe et à assigner en devoirs</li>
+            <li>Structuration du même contenu de base en une bibliothèque de cours autoportants sur la plateforme Moodle du centre, organisée par niveau CECRL (A1–B2)</li>
+            <li>Rédaction des objectifs pédagogiques et d'un guide d'auto-apprentissage afin que le matériel puisse être utilisé de façon autonome, sans formateur en direct</li>
+            <li>En 2025, adaptation de la bibliothèque existante en un cours payant autonome, publié sur QLearn, la nouvelle place de marché ouverte du centre</li>
+          </ul>
+        </div>
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Solution</h4>
+          <p>Fiches originales de grammaire et de vocabulaire · exercices sélectionnés pour les cours en direct · un cours Moodle autoportant structuré · un cours publié et vendable sur QLearn.</p>
+        </div>
+        <div class="case-field">
+          <h4><svg class="check" viewBox="0 0 20 20"><path d="M3 10 L8 15 L17 4"/></svg>Résultat</h4>
+          <p>Un ensemble unique de contenus qui a évolué avec la plateforme — du soutien en classe en direct à une ressource autoportante puis à un produit commercial — soutenant l'apprentissage autonome et l'engagement des apprenants adultes à chaque étape.</p>
+        </div>
+      </div>
+
+      <p class="tools-line">Plateformes — 4Schools · Moodle (i-Εκπαίδευση) · QLearn (depuis 2025)</p>
+      <div class="shot-gallery">
+        <div>
+          <img src="images/01-iekpaideusi-moodle.jpg" alt="Capture d'écran du cours de français A1 autoportant sur la plateforme i-Εκπαίδευση (Moodle)">
+          <p class="shot-caption">Cours de français A1 autoportant — i-Εκπαίδευση (Moodle)</p>
+        </div>
+      </div>
+      <div class="case-reflection">
+        <span class="label">Ce que j'améliorerais</span>
+        <p>J'aimerais ajouter un suivi simple de la progression sur le cours autoportant, afin de voir quelles ressources sont réellement utilisées par les apprenants et d'améliorer celles qui fonctionnent moins bien.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ ACADEMIC & PERSONAL PROJECTS ============ -->
+  <section class="section" id="academic-projects">
+    <div class="section-head"><span class="section-num">02</span><h2 class="section-title">Projets Académiques &amp; Personnels</h2></div>
+    <p class="section-sub">expérimentation, nouveaux outils, apprentissage continu</p>
+
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <span class="type-tag type-personal">Projet Personnel (FLE)</span>
+        <h4>Module Interactif — Vite et Bien A1/A2, Chapitre 1</h4>
+        <div class="proj-field">
+          <span class="k">Objectif</span>
+          <p>Réalisé de manière autonome pour explorer Articulate Storyline — un module e-learning interactif pour des apprenants de Français Langue Étrangère (FLE), basé sur le chapitre 1 de <em>Vite et Bien A1/A2</em>, incluant des exercices de dialogue, des activités d'écoute et des exercices de grammaire, avec des consignes rédigées en anglais pour des anglophones apprenant le français.</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Outils</span>
+          <p class="tools-inline">Articulate Storyline</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Compétences démontrées</span>
+          <p>Storyboarding · Conception d'interactions · Conception d'évaluations</p>
+        </div>
+        <div class="shot-gallery">
+          <div>
+            <img src="images/03-articulate-dialogue-slide.jpg" alt="Exercice de dialogue au restaurant à trous, Articulate Storyline">
+            <p class="shot-caption">Exercice de dialogue</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="type-tag type-personal">Projet Personnel (FLE)</span>
+        <h4>Menu d'Apprentissage Interactif</h4>
+        <div class="proj-field">
+          <span class="k">Objectif</span>
+          <p>Création d'un menu interactif sur Genially pour explorer un design pédagogiquement pertinent — les apprenants cliquent sur des icônes pour voir des explications et écouter l'audio de prononciation.</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Outils</span>
+          <p class="tools-inline">Genially</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Compétences démontrées</span>
+          <p>Conception d'interactions · Navigation autonome</p>
+        </div>
+        <div class="shot-gallery">
+          <div>
+            <img src="images/07-genially-menu.jpg" alt="Capture d'écran d'un menu de café interactif Genially avec icônes d'information cliquables">
+            <p class="shot-caption">Menu de café interactif (Genially)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="type-tag type-masters">Projet de semestre (M.Ed., Université Ouverte Hellénique)</span>
+        <h4>Module d'Enseignement à Distance : Game-Based Learning</h4>
+        <div class="proj-field">
+          <span class="k">Consigne</span>
+          <p>Un module d'enseignement à distance requis pour des enseignants du secondaire, réalisé selon un cahier des charges précis : objectifs pédagogiques, contenu vidéo original, vidéo et jeu interactifs, storytelling numérique, formulaire d'évaluation, guide d'approfondissement et outil d'accessibilité. J'ai créé le contenu vidéo et façonné la présentation du matériel.</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Outils</span>
+          <p class="tools-inline">Canva</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Compétences démontrées</span>
+          <p>Game-Based Learning · Storytelling numérique · Accessibilité</p>
+        </div>
+        <div class="shot-gallery">
+          <div>
+            <img src="images/06-gamebased-blogpost.jpg" alt="Article de blog présentant la vidéo interactive prototype sur le Game-Based Learning">
+            <p class="shot-caption">Présentation du projet : vidéo interactive prototype</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card reveal">
+        <span class="type-tag type-masters">Projet de semestre (M.Ed., Université Ouverte Hellénique)</span>
+        <h4>e-Portfolio Réflexif</h4>
+        <div class="proj-field">
+          <span class="k">Consigne</span>
+          <p>Un e-portfolio structuré requis, réalisé selon un cahier des charges précis : déclaration d'intention, cadre de conception en 10 étapes, badge de qualité, journal réflexif couvrant tous les modules du cours, et tableau d'auto-évaluation avec critères.</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Outils</span>
+          <p class="tools-inline">Canva</p>
+        </div>
+        <div class="proj-field">
+          <span class="k">Compétences démontrées</span>
+          <p>Pratique réflexive · Conception d'auto-évaluation · Conception de portfolio</p>
+        </div>
+        <div class="shot-gallery">
+          <div>
+            <img src="images/04-eportfolio-main.jpg" alt="Capture d'écran du dossier e-Portfolio sur la plateforme E-me">
+            <p class="shot-caption">Accueil de l'e-Portfolio (plateforme E-me)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section reveal" id="about">
+    <div class="section-head"><span class="section-num">03</span><h2 class="section-title">À propos</h2></div>
+    <p class="section-sub">qui je suis, en bref</p>
+
+    <div class="about-block" style="max-width:70ch;">
+      <p>Conceptrice pédagogique titulaire d'un Master en formation à distance, avec plus de trois ans d'expérience dans la conception de dispositifs de digital learning et d'e-learning pour des apprenants adultes. Combinant une expertise en ingénierie pédagogique avec plus de 20 ans d'expérience dans l'enseignement des langues, je développe des programmes de formation centrés sur l'apprenant en appliquant le modèle ADDIE et les principes Agile, de l'analyse des besoins et de la planification pédagogique jusqu'à la mise en œuvre. Maîtrisant Moodle, Genially, Canva et la création de contenu assistée par l'IA, je développe actuellement mon expertise sur Articulate 360. Passionnée par l'accessibilité et l'engagement des apprenants, je conçois des dispositifs de formation inclusifs qui produisent des résultats d'apprentissage significatifs.</p>
+    </div>
+  </section>
+
+  <!-- ============ DESIGN PHILOSOPHY ============ -->
+  <section class="section" id="philosophy">
+    <div class="section-head"><span class="section-num">04</span><h2 class="section-title">Ma Démarche Pédagogique</h2></div>
+    <p class="section-sub">comment j'aborde un cours</p>
+
+    <div class="phil-grid">
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg viewBox="0 0 24 24" stroke="var(--red)"><path d="M4 18v-3M9 18v-6M14 18V9M19 18V5"/></svg></div>
+        <h4>ADDIE</h4>
+        <p>Analyser, Concevoir, Développer, Implémenter, Évaluer — ma colonne vertébrale méthodologique. Je comprends l'apprenant et l'objectif avant de construire quoi que ce soit.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg viewBox="0 0 24 24" stroke="var(--teal)"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div>
+        <h4>SAM</h4>
+        <p>Successive Approximation Model. Je prototype rapidement et j'améliore par cycles de retours, plutôt que d'attendre une version « finale » unique.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg viewBox="0 0 24 24" stroke="var(--ochre)"><circle cx="12" cy="7" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg></div>
+        <h4>Andragogie</h4>
+        <p>Les adultes apprennent en faisant, pas en écoutant. Je conçois pour l'autonomie — un contenu que l'apprenant maîtrise, revisite et applique immédiatement.</p>
+      </div>
+      <div class="phil-card reveal">
+        <div class="phil-icon"><svg viewBox="0 0 24 24" stroke="var(--dusty)"><rect x="3.5" y="4" width="17" height="16" rx="1.5"/><path d="M3.5 9h17M8 9v11"/></svg></div>
+        <h4>Learning Experience Design</h4>
+        <p>L'ingénierie pédagogique rencontre l'UX. Un cours doit être aussi facile à parcourir qu'à apprendre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="section-head"><span class="section-num">05</span><h2 class="section-title">Compétences</h2></div>
+    <p class="section-sub">sur le bureau</p>
+
+    <div class="toolbox">
+      <div class="tool-group">
+        <h4><span class="tool-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 8.5l-2.2 5.3-5.3 2.2 2.2-5.3z"/></svg></span>Ingénierie Pédagogique</h4>
+        <div class="pill-row">
+          <span class="pill">Conception de parcours</span><span class="pill">Conception de curriculum</span><span class="pill">Curation de ressources</span>
+          <span class="pill">Microlearning</span><span class="pill">Andragogie</span><span class="pill">Conception d'évaluations</span>
+          <span class="pill">Storyboarding</span><span class="pill">Contenu assisté par l'IA</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <h4><span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M8 20h8M12 16v4"/></svg></span>LMS</h4>
+        <div class="pill-row"><span class="pill">Moodle</span><span class="pill">4Schools</span><span class="pill">QLearn</span></div>
+      </div>
+      <div class="tool-group">
+        <h4><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L15 6l3 3-10 10-4 1z"/><path d="M13 7l3 3"/></svg></span>Digital Learning</h4>
+        <div class="pill-row"><span class="pill">Canva</span><span class="pill">Genially</span><span class="pill">Articulate 360 (Learning)</span></div>
+      </div>
+      <div class="tool-group">
+        <h4><span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1.5"/><path d="M7.5 12l2 2 4-4"/></svg></span>Évaluation</h4>
+        <div class="pill-row"><span class="pill">Quizlet</span><span class="pill">Kahoot</span><span class="pill">LearningApps</span></div>
+      </div>
+      <div class="tool-group">
+        <h4><span class="tool-icon"><svg viewBox="0 0 24 24"><path d="M4 5h11a2 2 0 012 2v4a2 2 0 01-2 2H9l-3.5 3v-3H4a2 2 0 01-2-2V7a2 2 0 012-2z"/><path d="M13 15.5a2 2 0 002 2h1.5l2.5 2v-2H20a2 2 0 002-2V13a2 2 0 00-2-2h-1"/></svg></span>Collaboration</h4>
+        <div class="pill-row"><span class="pill">Microsoft Teams</span><span class="pill">Zoom</span><span class="pill">Webex</span></div>
+      </div>
+      <div class="tool-group">
+        <h4><span class="tool-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M7 9h10M7 13h6"/></svg></span>Bureautique</h4>
+        <div class="pill-row"><span class="pill">Microsoft 365</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section" id="education">
+    <div class="section-head"><span class="section-num">06</span><h2 class="section-title">Formation</h2></div>
+    <p class="section-sub">diplômes</p>
+
+    <div class="edu-item">
+      <h4>Master Éducation et Technologies dans les Systèmes d'Enseignement et d'Apprentissage à Distance – Sciences de l'Éducation (ΕΤΑ)</h4>
+      <p>Université Ouverte Hellénique</p>
+    </div>
+    <div class="edu-item">
+      <h4>Licence Langue et Littérature Françaises</h4>
+      <p>Université Nationale et Capodistrienne d'Athènes</p>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section class="section" id="certifications">
+    <div class="section-head"><span class="section-num">07</span><h2 class="section-title">Certifications</h2></div>
+    <p class="section-sub">formation continue</p>
+
+    <ul class="cert-list">
+      <li>Articulate 360</li>
+      <li>IA centrée sur l'humain en éducation</li>
+      <li>Éducation numérique accessible</li>
+    </ul>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="section-head"><span class="section-num">08</span><h2 class="section-title">Contact</h2></div>
+    <p class="section-sub">discutons</p>
+
+    <div class="contact-card reveal">
+      <p style="font-family:'Fraunces',serif; font-style:italic; font-size:19px; margin:0 0 6px;">Ouverte aux postes d'Ingénierie Pédagogique &amp; Digital Learning — France et autres pays francophones.</p>
+      <div class="contact-links">
+        <a href="tel:+306976455497">+30 697 645 5497</a>
+        <a href="mailto:olg.mavridou@gmail.com">olg.mavridou@gmail.com</a>
+        <a href="https://www.linkedin.com/in/olgamavridou-instructional-designer/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+      <div class="lang-row">
+        <span class="lang-chip">Grec — Langue maternelle</span>
+        <span class="lang-chip">Anglais — C2</span>
+        <span class="lang-chip">Français — B2</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="signoff">Merci d'avoir lu jusqu'ici !</span>
+    <p>CV complet disponible sur demande.</p>
+  </footer>
+
+</div>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
